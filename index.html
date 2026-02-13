@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner design · Find your home</title>
+    <!-- Fonts: Poppins (main) + Athene Voyage for h1 (fallback serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0 !important;
+            color: #ffffff;                /* white text for dark overlay */
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* MAIN BANNER with background image + overlay */
+        .main-banner {
+            position: relative;
+            background: url('./banner.png') no-repeat center center;
+            background-size: cover;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            isolation: isolate;          /* controls stacking context */
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;                   /* above overlay */
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* 2‑column layout */
+        .col-1, .col-2 {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+
+        /* LEFT COLUMN — headline & bullet list */
+        .col-1 h1 {
+            font-family: 'Athene Voyage', 'Times New Roman', serif;  /* exact requested font */
+            font-size: clamp(2.8rem, 8vw, 4.2rem);
+            font-weight: 500;              /* retains elegance, adjust as needed */
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.8rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* list styling */
+        .col-1 ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .col-1 li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0rem;
+            backdrop-filter: blur(2px);
+            padding: 0.6rem 1rem 0.6rem 0.8rem;
+            border-radius: 60px;
+            max-width: 480px;
+        }
+
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .icon svg {
+            display: block;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        .text {
+            font-size: 1.4rem;
+            font-weight: 500 !important;
+            color: #fff;
+            line-height: 0.4;
+        }
+
+        /* RIGHT COLUMN — form card */
+        .col-2 {
+            display: flex;
+            justify-content: flex-end;      /* push card to the right side */
+        }
+
+        .form-card {
+            background: #00000099;
+            color: white;                 /* dark slate for text */
+            width: 100%;
+            max-width: 480px;
+            padding: 2rem 2rem 2.2rem;
+            border-radius: 30px;
+            border: 1px white solid;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.2s ease;
+        }
+
+        .form-card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: white;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .form-card .subhead {
+            font-size: 0.95rem;
+            color: white;
+            margin-bottom: 1.8rem;
+            border-left: 4px solid #0080fe;
+            padding-left: 0.85rem;
+            font-weight: 400;
+        }
+
+        /* form elements */
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: white;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid white;
+            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.15s;
+            outline: none;
+            color: white;
+            resize: vertical;
+        }
+        input::placeholder{color: white;}
+
+        input:focus, textarea:focus {
+            border-color: #0080fe;
+            box-shadow: 0 0 0 3px rgba(0, 128, 254, 0.2);
+            background: #ffffff;
+        }
+
+        button {
+            background: #0080fe;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 12px 20px -14px #0080fe;
+            margin-top: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        button:hover {
+            background: #0066cc;
+            transform: scale(1.02);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* small adjustment for textarea */
+        textarea {
+            min-height: 90px;
+        }
+
+        /* responsive stacking */
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+                padding: 2rem 1.5rem;
+            }
+            .col-1, .col-2 {
+                width: 100%;
+            }
+            .col-2 {
+                justify-content: center;
+            }
+            .form-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .col-1 li {
+                max-width: 100%;
+            }
+        }
+
+        /* optional fine tune for very small screens */
+        @media (max-width: 480px) {
+            .col-1 h1 {
+                font-size: 2.8rem;
+            }
+            .text {
+                font-size: 1rem;
+            }
+        }
+
+        /* ensure icons keep proportions */
+        .icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* small extra polish: first list item slight emphasis */
+        .col-1 li:first-child .text {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-banner">
+        <div class="container">
+            <!-- LEFT COLUMN (headline + features) -->
+            <div class="col-1">
+                <h1>Find Your Perfect<br/> Home Today</h1>
+                <ul>
+                    <li>
+                        <span class="icon">
+                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="26" height="26">
+                                <circle cx="9.75" cy="9.53" r="7.58" fill="#fff"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 19.5a9.75 9.75 0 1 0 0-19.5 9.75 9.75 0 0 0 0 19.5m-.25-5.8 5.42-6.5-1.67-1.4-4.66 5.6-2.4-2.42-1.54 1.54 3.25 3.25.84.83z" fill="#0080fe"/>
+                            </svg>
+                        </span>
+                        <span class="text">Browse Premium Homes for Sale</span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="26" height="26">
+                                <circle cx="9.75" cy="9.53" r="7.58" fill="#fff"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 19.5a9.75 9.75 0 1 0 0-19.5 9.75 9.75 0 0 0 0 19.5m-.25-5.8 5.42-6.5-1.67-1.4-4.66 5.6-2.4-2.42-1.54 1.54 3.25 3.25.84.83z" fill="#0080fe"/>
+                            </svg>
+                        </span>
+                        <span class="text">Explore Affordable Rental Properties</span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="26" height="26">
+                                <circle cx="9.75" cy="9.53" r="7.58" fill="#fff"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 19.5a9.75 9.75 0 1 0 0-19.5 9.75 9.75 0 0 0 0 19.5m-.25-5.8 5.42-6.5-1.67-1.4-4.66 5.6-2.4-2.42-1.54 1.54 3.25 3.25.84.83z" fill="#0080fe"/>
+                            </svg>
+                        </span>
+                        <span class="text">Get Expert Local Market Guidance</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- RIGHT COLUMN (form) – exactly where you wanted it -->
+            <div class="col-2">
+                <div class="form-card">
+                    <h2>Schedule a Private Tour</h2>
+
+                    <!-- simple lead generation form -->
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="visitdate" name="visitdate" placeholder="Preferred Visit Date" required>
+                        </div>
+                        <button type="submit">Book My Visit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
