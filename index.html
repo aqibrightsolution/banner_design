@@ -28,12 +28,28 @@
         label{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:#fff;display:block;margin-bottom:.25rem}
         input,textarea{width:100%;background:0 0;border:1px solid #fff;border-radius:8px;padding:.9rem 1.2rem;font-family:Poppins,sans-serif;font-size:1rem;transition:all .15s;outline:0;color:#fff;resize:vertical}
         input::placeholder{color:#fff}
-        input:focus,textarea:focus{border-color:#0080fe;box-shadow:0 0 0 3px rgba(0,128,254,.2);background:#fff}
+        input:focus,textarea:focus{border-color:#0080fe;box-shadow:0 0 0 3px rgba(0,128,254,.2);background:#fff;color:#0080fe;}
         input:focus::placeholder, textarea:focus::placeholder {color: #0080fe;opacity: 1;}
         button{background:#0080fe;color:#fff;border:none;border-radius:8px;padding:1rem 2rem;font-size:1.2rem;font-weight:600;font-family:Poppins,sans-serif;width:100%;cursor:pointer;transition:background .2s,transform .1s;box-shadow:0 12px 20px -14px #0080fe;margin-top:.75rem;border:1px solid rgba(255,255,255,.2)}
         button:hover{background:#06c;transform:scale(1.02)}
         button:active{transform:scale(.98)}
         textarea{min-height:90px}
+        @media (max-width:1200px){
+            .col-1 h1{font-size: 3.5rem;}
+            .col-1 h1 br{display: none;}
+            .text{line-height: normal;}
+        }
+        @media (max-width:1040px){
+            .col-1 h1{font-size: 3rem;}
+            .text{font-size: 1.2rem;}
+            .form-card h2{font-size: 1.5rem;}
+        }
+        @media (max-width:950px){
+            .col-1 h1{font-size: 2.5rem;}
+            .text{font-size: 0.9rem;}
+            .form-card h2{font-size: 1.3rem;}
+            .icon svg {width: 20px !important;height: 20px !important;}
+        }
         @media (max-width:800px){
         .container{flex-direction:column;padding:1rem}
         .col-1,.col-2{width:100%}
@@ -41,40 +57,16 @@
         .form-card{max-width:500px;margin:0 auto}
         .col-1 li{max-width:100%}
         button{padding:.5rem}
+        .form-card{padding:1rem;background: #000000d1;}
         }
         @media (max-width:480px){
         .col-1 h1{font-size:2.5rem}
         .col-1 h1 br{display:none}
         .form-card h2{font-size:1.3rem}
-        .text{font-size:1rem;line-height:normal}
-        .form-card{padding:1rem}
+        .text{font-size:0.9rem;line-height:normal}
         }
         .icon svg{width:26px;height:26px}
         .col-1 li:first-child .text{font-weight:600}
-
-        .floating {
-    position: relative;
-}
-
-.floating label {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.9rem;
-    color: #aaa;
-    pointer-events: none;
-    transition: 0.2s ease;
-}
-
-.floating input:focus + label,
-.floating input:valid + label {
-    top: -8px;
-    font-size: 0.75rem;
-    background: #000;
-    padding: 0 4px;
-}
-
     </style>
 </head>
 <body>
